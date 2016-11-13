@@ -12,6 +12,7 @@ all logs sending to sysout exepted accesslog
 
 ## map accesslog to your host
 ```mkdir -p logs
+
 docker run -it --rm -p 80:8080 -v $(pwd -P)/logs:/opt/tomcat/logs dadez/tomcat8```
 
 ### the owner of file is root
