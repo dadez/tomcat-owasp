@@ -126,4 +126,4 @@ ENV JAVA_OPTS -Duser.timezone=Europe/Zurich
 ENV CATALINA_OPTS -Dfile.encoding=UTF-8
 
 EXPOSE 8080
-CMD ["su-exec", "tomcat", "catalina.sh", "run"]
+CMD ["catalina.sh", "run"]
