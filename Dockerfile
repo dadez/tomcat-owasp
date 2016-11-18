@@ -19,10 +19,6 @@ ENV TIMEZONE Europe/Zurich
 ENV LANG en_US.UTF-8
 ENV LC_ALL ""
 
-#override proxy settings
-#ENV http_proxy http://proxy.efd.admin.ch:8080
-#ENV https_proxy http://proxy.efd.admin.ch:8080
-
 RUN apk add --no-cache gnupg
 # see https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/KEYS
 # see also "update.sh" (https://github.com/docker-library/tomcat/blob/master/update.sh)
