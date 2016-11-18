@@ -1,6 +1,12 @@
 FROM dadez/jre:latest
 MAINTAINER dadez <dadez@protonmail.com>
 
+# add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
+ENV GID ${GID:-1000}
+ENV UID ${UID:-1000}
+RUN addgroup -g ${GID} tomcat \
+    && adduser -D -H -G tomcat -u ${UID} tomcat
+
 ADD ./configureWebXMLforDocker.groovy /tmp/
 ADD ./configureServerXMLforDocker.groovy /tmp/
 
@@ -10,12 +16,12 @@ RUN mkdir -p "$CATALINA_HOME"
 WORKDIR $CATALINA_HOME
 
 ENV TIMEZONE Europe/Zurich
-ENV LANG=en_US.UTF-8
-ENV LC_ALL=
+ENV LANG en_US.UTF-8
+ENV LC_ALL ""
 
 #override proxy settings
-ENV http_proxy=""
-ENV https_proxy=""
+#ENV http_proxy http://proxy.efd.admin.ch:8080
+#ENV https_proxy http://proxy.efd.admin.ch:8080
 
 RUN apk add --no-cache gnupg
 # see https://www.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/KEYS
@@ -37,7 +43,8 @@ ENV TOMCAT_ASC_URL http://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/
 RUN apk add --no-cache --virtual .fetch-deps \
 	ca-certificates \
 	tar \
-	openssl
+	openssl \
+	su-exec
 
 RUN apk add --update \
 	unzip \
@@ -119,4 +126,4 @@ ENV JAVA_OPTS -Duser.timezone=Europe/Zurich
 ENV CATALINA_OPTS -Dfile.encoding=UTF-8
 
 EXPOSE 8080
-CMD ["catalina.sh", "run"]
+CMD ["su-exec", "tomcat", "catalina.sh", "run"]
