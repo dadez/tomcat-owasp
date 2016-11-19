@@ -23,7 +23,13 @@ fi
 
 
 adduser -D -H -G ${groupName} -u ${userID} ${userName}
+#tomcat files are owned by user tomcat
 chown -R ${userName}:${groupName} .
+#set config files readonly
+chmod 400 conf/*
+#set only write/execute to logs directory
+#disabled now
+#chmod 300 logs
 
 exec su-exec ${userName} "$@"
 
