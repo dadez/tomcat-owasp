@@ -9,22 +9,24 @@ owaspized tomcat
 `docker build --build-arg TOMCAT_VERSION=8.5.8 -t tomcat8 .`
 
 ##run
-In the following samples we map the tomcat container exposed port (8080) to the default http port for easy use
 
 * run simple
-`docker run -it --rm -p 8080:8080 dadez/tomcat8`
+```
+docker run -it --rm -p 8080:8080 dadez/tomcat8
+```
 
-* run & map accesslog to your host
+Tomcat logs are send to sysout excepted accesslog
+
+* run & map accesslog to your host (without change logs ownership)
 ```
 mkdir -p logs # create a folder for store files
 docker run -it --rm -p 8080:8080 -v $(pwd -P)/logs:/opt/tomcat/logs dadez/tomcat8
 ```
 
-#### the owner of file is root
--- see this [article](https://stackoverflow.com/questions/23544282/what-is-the-best-way-to-manage-permissions-for-docker-shared-volumes#27021154)
-or run 
-`chmod 2775 logs`
-so the group will can read the files, but it isn't very nice
+The log files created are owned by the uid and gid 1000
+you can pass your own uid and gid on run command as follow
+```
+mkdir -p logs # create a folder for store files
+docker run -it --rm -p 8080:8080 -v $(pwd -P)/logs:/opt/tomcat/logs -e UID=$(id -u $USER) -e GID=$(id -g $USER) dadez/tomcat8
+```
 
-##logs
-all logs sending to sysout exepted accesslog
