@@ -50,7 +50,8 @@ dadez/tomcat8
 ```
 
 The log files created are owned by the uid and gid 1000
-you can pass your own uid and gid on run command as follow
+you can 
+* run passing your own uid and gid as follow
 ```
 mkdir -p logs # create a folder for store files
 docker run -it --rm -p 8080:8080 \
