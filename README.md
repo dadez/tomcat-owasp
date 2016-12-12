@@ -1,3 +1,6 @@
+[![](https://images.microbadger.com/badges/image/dadez/tomcat8:autobuild.svg)](https://microbadger.com/images/dadez/tomcat8:autobuild "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/dadez/tomcat8:autobuild.svg)](https://microbadger.com/images/dadez/tomcat8:autobuild "Get your own version badge on microbadger.com")
+
 # Description
 Tomcat image following most of the security considerations from [owasp](https://www.owasp.org/index.php/Securing_tomcat).
 
