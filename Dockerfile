@@ -1,6 +1,18 @@
 FROM dadez/jre:latest
 MAINTAINER dadez <dadez@protonmail.com>
 
+ARG BUILD_DATE
+ARG VCS_REF
+
+LABEL org.label-schema.build-date=$BUILD_DATE \
+          org.label-schema.name="tomcat8" \
+          org.label-schema.description="tomcat8 based on oracle java8 and alpine linux" \
+          org.label-schema.vcs-ref=$VCS_REF \
+          org.label-schema.vcs-url="e.g. https://github.com/dadez/tomcat-owasp" \
+          org.label-schema.vendor="dadez" \
+          org.label-schema.version=$VERSION \
+          org.label-schema.schema-version="1.0"
+
 ADD ./configureWebXMLforDocker.groovy /tmp/
 ADD ./configureServerXMLforDocker.groovy /tmp/
 
