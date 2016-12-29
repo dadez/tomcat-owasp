@@ -46,7 +46,7 @@ Tomcat logs are send to sysout excepted accesslog
 ```
 mkdir -p logs # create a folder for store files
 docker run -it --rm -p 8080:8080 \
--name tomcat \
+--name tomcat \
 -v $(pwd -P)/logs:/opt/tomcat/logs \
 dadez/tomcat8
 ```
@@ -60,7 +60,7 @@ docker run -it --rm -p 8080:8080 \
 -v $(pwd -P)/logs:/opt/tomcat/logs \
 -e UID=$(id -u $USER) \
 -e GID=$(id -g $USER) \
--name tomcat \
+--name tomcat \
 dadez/tomcat8
 ```
 
