@@ -96,7 +96,7 @@ RUN ln -sf /bin/bash /bin/sh
 WORKDIR /opt/
 ENV GROOVY_HOME /opt/groovy
 ENV PATH ${PATH}:${JAVA_HOME}/bin:${GROOVY_HOME}/bin
-ENV GROOVY_VERSION=2.4.7
+ENV GROOVY_VERSION=2.4.8
 RUN curl -sLo /opt/groovy.zip https://dl.bintray.com/groovy/maven/apache-groovy-binary-${GROOVY_VERSION}.zip \
         && unzip /opt/groovy.zip \
         && rm -f /opt/groovy.zip \
