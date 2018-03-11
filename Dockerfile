@@ -42,7 +42,7 @@ done
 ARG TOMCAT_MAJOR
 ENV TOMCAT_MAJOR ${TOMCAT_MAJOR:-8}
 ARG TOMCAT_VERSION
-ENV TOMCAT_VERSION ${TOMCAT_VERSION:-8.5.9}
+ENV TOMCAT_VERSION ${TOMCAT_VERSION:-8.5.28}
 
 ENV TOMCAT_TGZ_URL http://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz
 ENV TOMCAT_ASC_URL http://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz.asc
